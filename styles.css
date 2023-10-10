@@ -8,13 +8,18 @@ h1 {
     color: #fff;
 }
 
+h2, p {
+    color: #fff;
+}
+
+
 #formulario {
     width: 400px;
     margin: 0 auto;
     padding: 35px;
     border: 12px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(248, 248, 248, 0.1);
+    box-shadow: 0 0 10px rgb(61, 61, 61);
 }
 
 label {
@@ -22,6 +27,17 @@ label {
     margin-bottom: 5px;
     font-weight: bold;
 }
+
+/* Estilos CSS para mudar a cor dos elementos para branco */
+label,
+input[type="text"],
+input[type="number"],
+input[type="radio"],
+textarea,
+input[type="password"] {
+    color: #fff;
+}
+
 
 input[type="text"],
 input[type="number"],
@@ -39,7 +55,7 @@ input[type="radio"] {
 }
 
 input[type="submit"] {
-    background-color: #333;
+    background-color: #fff;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -73,7 +89,7 @@ button:hover {
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(59, 59, 59, 0.979);
 }
 
 #copyright {
