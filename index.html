@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário HTML5</title>
+    <link rel="short icon" href="img/e.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Preencha suas informações pessoais</h1>
+    <form id="formulario" onsubmit="return validarFormulario()">
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br>
+
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" required><br>
+
+        <label>Gênero:</label>
+        <input type="radio" id="masculino" name="genero" value="Masculino" required>
+        <label for="masculino">Masculino</label>
+        <input type="radio" id="feminino" name="genero" value="Feminino" required>
+        <label for="feminino">Feminino</label>
+        <input type="radio" id="outro" name="genero" value="Outro" required>
+        <label for="outro">Outro</label><br>
+
+        <label for="comentarios">Comentários ou Observações:</label><br>
+        <textarea id="comentarios" name="comentarios" rows="4" cols="50"></textarea><br>
+
+        <label for="senha">Senha (entre 8 e 10 caracteres):</label><br>
+        <input type="password" id="senha" name="senha" minlength="8" maxlength="10" required><br>
+
+        <button type="submit" id="btn-enviar">Enviar</button>
+        <button type="button" id="btn-limpar" onclick="limparFormulario()">Limpar Formulário</button>
+    </form>
+
+    <div id="resultado">
+        <h2>Informações Pessoais Recebidas:</h2>
+        <p><strong>Nome:</strong> <span id="resultadoNome"></span></p>
+        <p><strong>Idade:</strong> <span id="resultadoIdade"></span></p>
+        <p><strong>Gênero:</strong> <span id="resultadoGenero"></span></p>
+        <p><strong>Comentários ou Observações:</strong> <span id="resultadoComentarios"></span></p>
+        <button type="button" id="btn-voltar" onclick="voltar()">Voltar</button>
+    </div>
+
+    <div id="copyright">
+        &copy; 2023 Alexsandra Silva
+    </div>
+
+    <script>
+        // Função para voltar ao formulário
+        function voltar() {
+            document.getElementById("formulario").style.display = "block";
+            document.getElementById("resultado").style.display = "none";
+        }
+        
+        function exibirResultado() {
+            var nome = document.getElementById("nome").value;
+            var idade = document.getElementById("idade").value;
+            var genero = document.querySelector('input[name="genero"]:checked').value;
+            var comentarios = document.getElementById("comentarios").value;
+
+            document.getElementById("resultadoNome").textContent = nome;
+            document.getElementById("resultadoIdade").textContent = idade;
+            document.getElementById("resultadoGenero").textContent = genero;
+            document.getElementById("resultadoComentarios").textContent = comentarios;
+
+            document.getElementById("formulario").style.display = "none";
+            document.getElementById("resultado").style.display = "block";
+        }
+
+         // Função de validação do formulário
+        function validarFormulario() {
+            var senha = document.getElementById("senha").value;
+            var comentarios = document.getElementById("comentarios").value;
+
+            // Validação da senha: pelo menos 8 e no máximo 10 caracteres
+            if (senha.length < 8 || senha.length > 10) {
+                alert("A senha deve conter entre 8 e 10 caracteres.");
+                return false;
+            }
+
+            // Validação do campo de comentários
+            if (comentarios.trim() === "") {
+                alert("O campo de comentários é obrigatório.");
+                return false;
+            }
+
+            // Se a validação passar, exibir a página de resultado
+            exibirResultado();
+
+            return false; // Evita o envio do formulário
+        }
+
+        // Função para limpar o formulário
+        function limparFormulario() {
+            document.getElementById("formulario").reset();
+        }
+    </script>
+</body>
+</html>
+
